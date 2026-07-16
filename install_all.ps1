@@ -16,6 +16,10 @@ $sdkRoot = 'C:\SDK'
 
 . (Join-Path $Root 'scripts\common.ps1')
 
+
+Write-Host "Some registry changes and programs require a system restart to take full effect."
+$reboot = Read-Host "Would you like to restart the system right after installation? (Y/N)"
+
 Write-Log "===== setup start (Root: $Root) ====="
 
 . (Join-Path $Root 'scripts\install_sdk.ps1')
@@ -24,10 +28,13 @@ Write-Log "===== setup start (Root: $Root) ====="
 
 Write-Log "===== setup end ====="
 
-Write-Host ""
-Write-Host "all setup is closed. Log File: $logFile"
+Write-Log ""
+Write-Log "all setup complete. Log File: $logFile"
+
 
 ### RESTART ###
-Write-Log "Restart"
-Start-Sleep -Seconds 10
-Restart-Computer -Force
+if ($reboot -eq 'Y' -or $reboot -eq 'y') {
+    Write-Log "Windows AutoSetup complete. System restarting in 10 seconds."
+    Start-Sleep -Seconds 10
+    Restart-Computer -Force
+}

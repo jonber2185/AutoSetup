@@ -43,8 +43,6 @@ $config = @(
 Process-Folder (Join-Path $Root 'installer\program') 'Install Programs' $config
 
 
-# chrome
-Install-Program 'Google.Chrome'
 # Everything
 Install-Program 'voidtools.Everything'
 # TreeSize
