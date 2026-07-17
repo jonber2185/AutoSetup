@@ -70,7 +70,7 @@ Install-Program 'MHNexus.HxD'
 # Claude
 Install-Program 'Anthropic.Claude' '--override "/S"'
 # vscode
-Install-Program 'Microsoft.VisualStudioCode'
+Install-Program 'Microsoft.VisualStudioCode' '--override "/SILENT /mergetasks=`"!runcode,addcontextmenufiles,addcontextmenufolders`""'
 # visual studio
 Install-Program 'Microsoft.VisualStudio.Community' '--override "--quiet"'
 # eclipse

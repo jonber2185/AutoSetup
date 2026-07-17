@@ -102,7 +102,16 @@ function Install-Program {
         [string]$param = "--silent"
     )
 
-    $arguments = "install --id $id $param --accept-source-agreements --accept-package-agreements"
-    Start-Process winget -ArgumentList $arguments -Wait
+    $argumentList = @(
+        "install",
+        "--id", $id,
+        "--accept-source-agreements",
+        "--accept-package-agreements"
+    )
+    if ($param) {
+        $argumentList += $param
+    }
+
+    Start-Process winget -ArgumentList $argumentList -Wait
     Write-Log "  -> Installation: $id"
 }
